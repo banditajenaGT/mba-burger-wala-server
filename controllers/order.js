@@ -1,4 +1,4 @@
-import { instance } from '../index.js'
+import { instance } from '../api/index.js'
 import { asyncError } from '../middlewares/errorMiddleware.js'
 import { Order } from '../models/Order.js'
 import ErrorHandler from '../utils/ErrorHandler.js'

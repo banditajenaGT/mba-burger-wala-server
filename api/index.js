@@ -1,22 +1,21 @@
 import express from "express";
 import dotenv from 'dotenv'
-import { connectdatabase } from "./config/database.js";
-import userRouter from './routes/user.js'
-import orderRouter from './routes/order.js'
-import { connectPassport } from './utils/Provider.js'
+import { connectdatabase } from "../config/database.js";
+import { connectPassport } from '../utils/Provider.js'
+import userRouter from '../routes/user.js'
+import orderRouter from '../routes/order.js'
 import session from 'express-session'
 import passport from "passport";
 import cookieParser from "cookie-parser";
-import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import { errorMiddleware } from "../middlewares/errorMiddleware.js";
 import Razorpay from "razorpay";
 import cors from 'cors'
-dotenv.config({
-    path: "./config/config.env"
-})
+
+dotenv.config({ path: "./config/config.env" })
 
 export const instance = new Razorpay({
     key_id: process.env.RAZORPAY_API_KEY,
-    key_secret: process.env.RAZORPAY_API_SECRET,
+    key_secret: process.env.RAZORPAY_API_SECRET
 });
 
 connectdatabase()
@@ -25,9 +24,9 @@ connectPassport()
 const app = express()
 
 app.use(cors({
-    credentials:true,
-    origin:process.env.FRONTEND_URL,
-    methods:["GET","POST","PUT","DELETE"]
+    credentials: true,
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"]
 }))
 app.use(cookieParser())
 app.use(express.json())
@@ -38,10 +37,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
-    cookie:{
-        secure:process.env.NODE_ENV==="development"?false:true,
-        httpOnly:process.env.NODE_ENV==="development"?false:true,
-        sameSite:process.env.NODE_ENV==="development"?false:"none"
+    cookie: {
+        secure: process.env.NODE_ENV === "development" ? false : true,
+        httpOnly: process.env.NODE_ENV === "development" ? false : true,
+        sameSite: process.env.NODE_ENV === "development" ? false : "none"
     }
 }))
 app.use(passport.authenticate("session"))
