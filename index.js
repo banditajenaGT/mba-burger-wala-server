@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import Razorpay from "razorpay";
 import cors from 'cors'
+import bodyParser from 'body-parser'
 
 dotenv.config({ path: "./config/config.env" })
 
@@ -30,7 +31,7 @@ app.use(cors({
 }))
 app.use(cookieParser())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.enable("trust proxy")
 
 //Middlewares
