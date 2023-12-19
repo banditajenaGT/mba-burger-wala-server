@@ -1,13 +1,13 @@
 import express from "express";
 import dotenv from 'dotenv'
-import { connectdatabase } from "../config/database.js";
-import { connectPassport } from '../utils/Provider.js'
-import userRouter from '../routes/user.js'
-import orderRouter from '../routes/order.js'
+import { connectdatabase } from "./config/database.js";
+import { connectPassport } from './utils/Provider.js'
+import userRouter from './routes/user.js'
+import orderRouter from './routes/order.js'
 import session from 'express-session'
 import passport from "passport";
 import cookieParser from "cookie-parser";
-import { errorMiddleware } from "../middlewares/errorMiddleware.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import Razorpay from "razorpay";
 import cors from 'cors'
 

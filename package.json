@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "SET NODE_ENV=production & node api/index.js",
-    "dev": "SET NODE_ENV=development & nodemon api/index.js"
+    "start": "SET NODE_ENV=production & node index.js",
+    "dev": "SET NODE_ENV=development & nodemon index.js"
   },
   "author": "",
   "license": "ISC",
