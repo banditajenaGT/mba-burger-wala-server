@@ -17,8 +17,7 @@ export const logout = asyncError(async (req, res, next) => {
             secure: process.env.NODE_ENV === "development" ? false : true,
             httpOnly: process.env.NODE_ENV === "development" ? false : true,
             sameSite: process.env.NODE_ENV === "development" ? false : "none"
-        })
-        res.status(200).json({
+        }).status(200).json({
             message: "Logged Out Successfully"
         })
     })
