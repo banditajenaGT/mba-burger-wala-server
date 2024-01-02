@@ -13,7 +13,7 @@ export const logout = asyncError(async (req, res, next) => {
     req.session.destroy((err) => {
         if (err) return next(err)
 
-        res.cookie("connect.sid", null, {
+        res.setCookie("connect.sid", null, {
             secure: process.env.NODE_ENV === "development" ? false : true,
             httpOnly: process.env.NODE_ENV === "development" ? false : true,
             sameSite: process.env.NODE_ENV === "development" ? false : "none"
