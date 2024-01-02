@@ -9,7 +9,7 @@ export const myProfile = asyncError(async (req, res, next) => {
     })
 })
 
-export const logout = asyncError(async (req, res, next) => {
+export const logout =async (req, res, next) => {
     req.session.destroy((err) => {
         if (err) return next(err)
 
@@ -22,7 +22,7 @@ export const logout = asyncError(async (req, res, next) => {
     return res.status(200).json({
         message: "Logged Out Successfully"
     })
-})
+}
 
 export const getAdminUsers = asyncError(async (req, res, next) => {
     const users = await User.find({})
