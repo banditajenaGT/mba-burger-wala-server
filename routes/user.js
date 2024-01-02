@@ -14,7 +14,7 @@ router.get("/login", passport.authenticate("google", {
 }))
 
 router.get("/me", isAuthenticated, myProfile)
-router.get("/logout", logout)
+router.delete("/logout", logout)
 
 //admin middleware
 router.get("/admin/users", isAuthenticated, authorizedAdmin, getAdminUsers)
