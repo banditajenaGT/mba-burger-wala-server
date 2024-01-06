@@ -6,7 +6,7 @@ const schema = new Schema({
             type: String,
             required: true
         },
-        cty: {
+        city: {
             type: String,
             required: true
         },
@@ -22,7 +22,7 @@ const schema = new Schema({
             type: Number,
             required: true
         },
-        phoneNumber: {
+        phoneNo: {
             type: Number,
             required: true
         },
@@ -60,8 +60,7 @@ const schema = new Schema({
         },
     },
     user: {
-        // type: Schema.ObjectId,
-        type: String,
+        type: Schema.ObjectId,
         ref: "User",
         required: true
     },
