@@ -156,3 +156,10 @@ export const processOrder = asyncError(async (req, res, next) => {
         message: "Status Updated Successfully"
     })
 })
+
+export const getRazorpayKey = asyncError(async (req, res, next) => {
+    res.status(200).json({
+        success: true,
+        key:process.env.RAZORPAY_API_KEY
+    })
+})

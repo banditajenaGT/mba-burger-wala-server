@@ -4,6 +4,7 @@ import {
     getAdminOrders,
     getMyOrders,
     getOrderDetails,
+    getRazorpayKey,
     paymentVerification,
     placeOrderCod,
     placeOrderOnline,
@@ -18,9 +19,11 @@ router.route('/paymentverification').post(isAuthenticated,paymentVerification)
 
 router.route('/myorders').get(isAuthenticated, getMyOrders)
 router.route('/order/:id').get(isAuthenticated, getOrderDetails)
+router.route('/key').get(isAuthenticated, getRazorpayKey)
 
 //add authorized admin middleware
 router.route('/admin/orders').get(isAuthenticated, authorizedAdmin, getAdminOrders)
 router.route('/admin/order/:id').get(isAuthenticated, authorizedAdmin, processOrder)
+
 
 export default router
