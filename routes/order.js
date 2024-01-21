@@ -1,29 +1,32 @@
-import express from 'express'
-import { authorizedAdmin, isAuthenticated } from '../middlewares/auth.js'
+import express from "express";
+import { authorizedAdmin, isAuthenticated } from "../middlewares/auth.js";
 import {
-    getAdminOrders,
-    getMyOrders,
-    getOrderDetails,
-    getRazorpayKey,
-    paymentVerification,
-    placeOrderCod,
-    placeOrderOnline,
-    processOrder
-} from '../controllers/order.js'
+  getAdminOrders,
+  getMyOrders,
+  getOrderDetails,
+  getRazorpayKey,
+  paymentVerification,
+  placeOrderCod,
+  placeOrderOnline,
+  processOrder,
+} from "../controllers/order.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.route('/createordercod').post(isAuthenticated,placeOrderCod)
-router.route('/createorderonline').post(isAuthenticated,placeOrderOnline)
-router.route('/paymentverification').post(isAuthenticated,paymentVerification)
+router.route("/createordercod").post(isAuthenticated, placeOrderCod);
+router.route("/createorderonline").post(isAuthenticated, placeOrderOnline);
+router.route("/paymentverification").post(isAuthenticated, paymentVerification);
 
-router.route('/myorders').get(isAuthenticated, getMyOrders)
-router.route('/order/:id').get(isAuthenticated, getOrderDetails)
-router.route('/key').get(isAuthenticated, getRazorpayKey)
+router.route("/myorders").get(isAuthenticated, getMyOrders);
+router.route("/order/:id").get(isAuthenticated, getOrderDetails);
+router.route("/key").get(isAuthenticated, getRazorpayKey);
 
 //add authorized admin middleware
-router.route('/admin/orders').get(isAuthenticated, authorizedAdmin, getAdminOrders)
-router.route('/admin/order/:id').get(isAuthenticated, authorizedAdmin, processOrder)
+router
+  .route("/admin/orders")
+  .get(isAuthenticated, authorizedAdmin, getAdminOrders);
+router
+  .route("/admin/order/:id")
+  .get(isAuthenticated, authorizedAdmin, processOrder);
 
-
-export default router
+export default router;
