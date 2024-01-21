@@ -128,7 +128,7 @@ export const getOrderDetails = asyncError(async (req, res, next) => {
 
 export const getAdminOrders = asyncError(async (req, res, next) => {
 
-    const orders = await Order.find({}).populate("user", "name")
+    const orders = await Order.find({}).populate("user", "name").sort({$natural:-1})
 
     res.status(200).json({
         success: true,
