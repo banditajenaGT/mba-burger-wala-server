@@ -71,11 +71,11 @@ export const contact = asyncError(async (req, res, next) => {
       auth: {
         user: process.env.SMPT_USER,
         pass: process.env.SMPT_PASSWORD,
-        service: process.env.SMPT_SERVICE,
       },
+      service: process.env.SMPT_SERVICE,
     });
     await transport.sendMail({
-      from: email,
+      from: process.env.SMPT_USER,
       to: email,
       subject: "Contact Request",
       text: userMessage,
@@ -84,5 +84,5 @@ export const contact = asyncError(async (req, res, next) => {
 
   await sendMail({ userMessage, email });
 
-  res.status(200).json({ success: true, message: "Message sent successfully" })
+  res.status(200).json({ success: true, message: "Message sent successfully" });
 });
