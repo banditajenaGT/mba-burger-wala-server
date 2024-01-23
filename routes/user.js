@@ -1,6 +1,6 @@
 import express from 'express'
 import passport from 'passport'
-import { getAdminStats, getAdminUsers, logout, myProfile } from '../controllers/user.js'
+import { contact, getAdminStats, getAdminUsers, logout, myProfile } from '../controllers/user.js'
 import { authorizedAdmin, isAuthenticated } from '../middlewares/auth.js'
 
 const router = express.Router()
@@ -14,6 +14,7 @@ router.get("/login", passport.authenticate("google", {
 }))
 
 router.get("/me", isAuthenticated, myProfile)
+router.post("/contact", contact)
 router.delete("/logout", logout)
 
 //admin middleware
