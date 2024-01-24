@@ -64,7 +64,7 @@ export const contact = asyncError(async (req, res, next) => {
 
   const userMessage = `Hey !! I'm ${name}, \n ${text}`;
 
-  const sendMail = async ({ userMessage, email }) => {
+  const sendMail = async () => {
     const transport = nodeMailer.createTransport({
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
@@ -83,7 +83,7 @@ export const contact = asyncError(async (req, res, next) => {
     });
   };
 
-  await sendMail({ userMessage, email });
+  await sendMail();
 
   res.status(200).json({ success: true, message: "Message sent successfully" });
 });
