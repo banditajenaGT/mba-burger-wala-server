@@ -68,6 +68,7 @@ export const contact = asyncError(async (req, res, next) => {
     const transport = nodeMailer.createTransport({
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
+      secure:true,
       auth: {
         user: process.env.SMPT_USER,
         pass: process.env.SMPT_PASSWORD,
